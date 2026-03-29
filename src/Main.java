@@ -1,17 +1,17 @@
 import java.util.*;
 import java.lang.*;
 public class Main {
-    public static int gcd(int num1, int num2) {
-        if (num2 == 0) {
-            return num1;
+    public static int Coof(int n1, int n2) {
+        if (n2 == 0 || n2 == n1) {
+            return 1;
         }
-        return gcd(num2, num1 % num2);
+        return Coof(n1 - 1, n2 - 1) + Coof(n1 - 1, n2);
     }
     public static void main() {
         Scanner input = new Scanner(System.in);
         System.out.print("Enter a number or text: ");
         int num1 = input.nextInt();
         int num2 = input.nextInt();
-        System.out.println(gcd(num1, num2));
+        System.out.println(Coof(num1, num2));
     }
 }
