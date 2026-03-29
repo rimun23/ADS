@@ -1,30 +1,26 @@
 import java.util.*;
-import java.lang.*;
 public class Main {
+    public static float findAvg(int[] arr, int number){
+        int full = 0;
+        for(int i : arr){
+            full += arr[i-1];
+        }
+        float res = (float) full/number;
+        return res;
+    }
     public static void main() {
         Scanner input = new Scanner(System.in);
-        System.out.print("Enter a number for check to prime: ");
+        System.out.println("Enter a number for limit an array: ");
         int number = input.nextInt();
-        if (number<2){
-            System.out.print("Composite");
+        int[] arr = new int[number];
+        for (int i = 0; i < number; i++) {
+            System.out.println("Enter " + (i+1) + " number in array by index: ");
+            arr[i] = input.nextInt();
         }
-        else {
-            boolean isPrime = true;
-            for(int i = 2; i < Math.sqrt(number)+1; i++){
-                if(number % i == 0){
-                    isPrime = false;
-                    break;
-                }
-            }
-            if(isPrime){
-                System.out.println("Prime");
-            }
-            else{
-                System.out.println("Composite");
-            }
-        }
+        System.out.println("average number in this array is " + findAvg(arr, number));
     }
 }
+
 
 
 
