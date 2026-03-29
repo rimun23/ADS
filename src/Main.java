@@ -1,17 +1,19 @@
 import java.util.*;
 import java.lang.*;
 public class Main {
-    public static int Coof(int n1, int n2) {
-        if (n2 == 0 || n2 == n1) {
-            return 1;
+    public static String isDigits(String s) {
+        for (int i = 0; i < s.length(); i++) {
+            if (!Character.isDigit(s.charAt(i))) {
+                return "No";
+            }
         }
-        return Coof(n1 - 1, n2 - 1) + Coof(n1 - 1, n2);
+        return "Yes";
     }
     public static void main() {
         Scanner input = new Scanner(System.in);
         System.out.print("Enter a number or text: ");
-        int num1 = input.nextInt();
-        int num2 = input.nextInt();
-        System.out.println(Coof(num1, num2));
+        String string = input.next();
+        System.out.println(isDigits(string));
     }
 }
+
