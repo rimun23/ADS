@@ -1,12 +1,13 @@
 import java.util.*;
 public class Main {
-    public static float findAvg(int[] arr, int number){
-        int full = 0;
+    public static int findMin(int[] arr){
+        int min = arr[0];
         for(int i : arr){
-            full += arr[i-1];
+            if(i<min){
+                min = i;
+            }
         }
-        float res = (float) full/number;
-        return res;
+        return min;
     }
     public static void main() {
         Scanner input = new Scanner(System.in);
@@ -17,7 +18,7 @@ public class Main {
             System.out.println("Enter " + (i+1) + " number in array by index: ");
             arr[i] = input.nextInt();
         }
-        System.out.println("average number in this array is " + findAvg(arr, number));
+        System.out.println("minimum number in this array is " + findMin(arr));
     }
 }
 
