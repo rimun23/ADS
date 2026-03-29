@@ -1,23 +1,18 @@
 import java.util.*;
 import java.lang.*;
 public class Main {
-    public static void permute(String string, String space) {
-        if (string.length() == 0) {
-            System.out.println(space);
-            return;
+    public static long power(int a, int number) {
+        if (number == 0) {
+            return 1;
         }
-
-        for (int i = 0; i < string.length(); i++) {
-            char ch = string.charAt(i);
-            String rest = string.substring(0, i) + string.substring(i + 1);
-            permute(rest, space + ch);
-        }
+        return a * power(a, number - 1);
     }
     public static void main() {
         Scanner input = new Scanner(System.in);
         System.out.print("Enter a number for power: ");
-        String string = input.next();
-        permute(string, "");
+        int a = input.nextInt();
+        int number = input.nextInt();
+        System.out.println(power(a, number));
     }
 }
 
