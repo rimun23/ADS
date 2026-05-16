@@ -1,41 +1,24 @@
-import java.util.Random;
-public class Main{
-    public static void main(String[]args){
-        System.out.println("Test for HashTable");
-        MyHashTable<MyTestingClass, Student> table = new MyHashTable<>(100);
-        Random random = new Random();
-        for(int i = 0; i<10000; i++){
-            int id = random.nextInt(10000);
-            String name = "Name" + random.nextInt(10000);
-            MyTestingClass key = new MyTestingClass(id, name);
-            Student value = new Student("Student" + i, 18 + random.nextInt(10));
-            table.put(key, value);
-        }
-        table.printBucketSizes();
-        System.out.println("BST:");
-        BST<Integer, String> tree = new BST<>();
-        tree.put(50, "A");
-        tree.put(30, "B");
-        tree.put(70, "C");
-        tree.put(20, "D");
-        tree.put(40, "E");
-        tree.put(60, "F");
-        tree.put(80, "G");
-        System.out.println("BST size: " + tree.size());
-        System.out.println("Value for key 40: " + tree.get(40));
-        System.out.println("In-order traversal: ");
-        for(var elem: tree){
-            System.out.println("key is " + elem.getKey() + " and value is " + elem.getValue());
-        }
-        tree.delete(70);
-        System.out.println("\n after deleting key: 70");
-        System.out.println("BST size: " + tree.size());
-        for(var elem : tree){
-            System.out.println("key is "+ elem.getKey() + " and value is " + elem.getValue());
-        }
+public class Main {
+    public static void main(String[] args) {
+        WeightedGraph<String> graph = new WeightedGraph<>(false);
+        Vertex<String> astana = new Vertex<>("Astana");
+        Vertex<String> almaty = new Vertex<>("Almaty");
+        Vertex<String> shymkent = new Vertex<>("Shymkent");
+        Vertex<String> karaganda = new Vertex<>("Karaganda");
+        Vertex<String> aktobe = new Vertex<>("Aktobe");
+        graph.addEdge(astana, karaganda, 3.0);
+        graph.addEdge(astana, almaty, 10.0);
+        graph.addEdge(karaganda, almaty, 4.0);
+        graph.addEdge(almaty, shymkent, 2.0);
+        graph.addEdge(shymkent, aktobe, 8.0);
+        graph.addEdge(karaganda, aktobe, 15.0);
+        System.out.println("BFS path from Astana to Aktobe:");
+        BreadthFirstSearch<String> bfs = new BreadthFirstSearch<>(astana);
+        System.out.println(bfs.pathTo(aktobe));
+        System.out.println();
+        System.out.println("Dijkstra path from Astana to Aktobe:");
+        DijkstraSearch<String> dijkstra = new DijkstraSearch<>(astana);
+        System.out.println(dijkstra.pathTo(aktobe));
+        System.out.println("Distance: " + dijkstra.distanceTo(aktobe));
     }
 }
-
-
-
-
